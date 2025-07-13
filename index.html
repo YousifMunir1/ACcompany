@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBreeze | AC Services in Iraq</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #00aaff;
+            --dark: #003366;
+            --light: #f8f9fa;
+            --accent: #ff6600;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        body.rtl {
+            direction: rtl;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Traditional Arabic';
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .lang-btn {
+            border: none;
+            background: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+            
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e504f03e-d6f2-4798-bd8c-a8f1f3203a4f.png') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .map-container {
+            height: 300px;
+            margin-top: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" id="lang-en">EN</button>
+        <button class="lang-btn" id="lang-ar">AR</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="CoolBreeze AC company logo featuring a blue snowflake icon with company name">
+                <span class="en">CoolBreeze</span>
+                <span class="ar hidden">نسيم بارد</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="en">Home</a><a href="#home" class="ar hidden">الصفحة الرئيسية</a></li>
+                <li><a href="#about" class="en">About</a><a href="#about" class="ar hidden">معلومات عنا</a></li>
+                <li><a href="#services" class="en">Services</a><a href="#services" class="ar hidden">خدماتنا</a></li>
+                <li><a href="#contact" class="en">Contact</a><a href="#contact" class="ar hidden">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="en animate">Premium AC Services in <span style="color: var(--accent);">Iraq</span></h1>
+            <h1 class="ar hidden animate">خدمات تكييف الهواء الممتازة في <span style="color: var(--accent);">العراق</span></h1>
+            
+            <p class="en animate delay-1">Keeping your comfort our top priority with high-quality installation, repair, and maintenance services across all major brands.</p>
+            <p class="ar hidden animate delay-1">نحافظ على راحتك كأولوية قصيرة لدينا مع خدمات تركيب وإصلاح وصيانة عالية الجودة لجميع الماركات الرئيسية.</p>
+            
+            <div class="hero-btns animate delay-2">
+                <a href="#contact" class="btn en">Get a Free Quote</a>
+                <a href="#contact" class="btn ar hidden">احصل على عرض مجاني</a>
+                <a href="#services" class="btn btn-outline en">Our Services</a>
+                <a href="#services" class="btn btn-outline ar hidden">خدماتنا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-50">
+        <div class="section-title">
+            <h2 class="en">About Us</h2>
+            <h2 class="ar hidden">معلومات عنا</h2>
+            <p class="en">CoolBreeze is your trusted partner for all air conditioning needs in Iraq</p>
+            <p class="ar hidden">نسيم بارد هو شريكك الموثوق لجميع احتياجات تكييف الهواء في العراق</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="en">10+ Years of Cooling Excellence</h2>
+                <h2 class="ar hidden">10+ سنوات من التميز في التبريد</h2>
+                
+                <p class="en">
+                    Founded in 2013, CoolBreeze has grown to become one of the most trusted AC service providers in Iraq. 
+                    Our team of certified technicians brings unparalleled expertise in installation, repair, and maintenance 
+                    of all major AC brands available in the market.
+                </p>
+                <p class="ar hidden">
+                    تأسست نسيم بارد في عام 2013، ونمت لتصبح واحدة من أكثر مزودي خدمات التكييف موثوقية في العراق. 
+                    يجلب فريقنا من الفنيين المعتمدين خبرة لا مثيل لها في تركيب وإصلاح وصيانة جميع الماركات الرئيسية للتكييف المتوفرة في السوق.
+                </p>
+                
+                <h3 class="en" style="margin-top: 1.5rem;">Why Choose Us?</h3>
+                <h3 class="ar hidden" style="margin-top: 1.5rem;">لماذا تختارنا؟</h3>
+                
+                <ul class="en">
+                    <li>Certified technicians with extensive experience</li>
+                    <li>Genuine spare parts and accessories</li>
+                    <li>24/7 emergency repair services</li>
+                    <li>Competitive pricing and transparent quotes</li>
+                    <li>Warranty on all our services</li>
+                </ul>
+                
+                <ul class="ar hidden" dir="rtl">
+                    <li>فنيون معتمدون ذوو خبرة واسعة</li>
+                    <li>قطع غيار وإكسسوارات أصلية</li>
+                    <li>خدمات إصلاح طارئة على مدار الساعة</li>
+                    <li>أسعار تنافسية وعروض أسعار شفافة</li>
+                    <li>ضمان على جميع خدماتنا</li>
+                </ul>
+            </div>
+            
+            <div class="about-image animate delay-2">
+                <img src="about us.png" alt="Team of AC technicians in uniform working on HVAC system in a modern office building in Baghdad">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-title">
+            <h2 class="en">Our Services</h2>
+            <h2 class="ar hidden">خدماتنا</h2>
+            <p class="en">Comprehensive air conditioning solutions tailored to your needs</p>
+            <p class="ar hidden">حلول شاملة لتكييف الهواء مخصصة لاحتياجاتك</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card animate">
+                <div class="service-image">
+                    <img src="ac installation.png" alt="Technician installing new AC unit in a residential home with proper measuring and leveling">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="en">AC Installation</h3>
+                    <h3 class="ar hidden">تركيب التكييف</h3>
+                    <p class="en">
+                        Professional installation of all types of air conditioners including split, window, and central AC units.
+                        We ensure proper sizing, electrical connections, and optimal placement for maximum efficiency.
+                    </p>
+                    <p class="ar hidden">
+                        التثبيت الاحترافي لجميع أنواع مكيفات الهواء بما في ذلك الوحدات المنفصلة والنوافذ والوحدات المركزية.
+                        نضمن الحجم المناسب والتوصيلات الكهربائية والموقع الأمثل لأقصى كفاءة.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-card animate delay-1">
+                <div class="service-image">
+                    <img src="ac repair.png" alt="AC technician performing maintenance cleaning on an outdoor compressor unit">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3 class="en">AC Repair</h3>
+                    <h3 class="ar hidden">إصلاح التكييف</h3>
+                    <p class="en">
+                        Fast and reliable repair services for all AC issues including cooling problems, electrical faults, 
+                        refrigerant leaks, compressor failures, and more. We service all major brands.
+                    </p>
+                    <p class="ar hidden">
+                        خدمات إصلاح سريعة وموثوقة لجميع مشاكل التكييف بما في ذلك مشاكل التبريد والأعطال الكهربائية،
+                        تسرب المبردات، أعطال الضاغط، والمزيد. نقدم الخدمة لجميع الماركات الكبرى.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card animate delay-2">
+                <div class="service-image">
+                    <img src="ac maintinance.png" alt="Close-up of technician cleaning AC filters during routine maintenance service">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="en">AC Maintenance</h3>
+                    <h3 class="ar hidden">صيانة التكييف</h3>
+                    <p class="en">
+                        Regular maintenance programs to keep your AC running efficiently, reduce energy consumption, 
+                        extend equipment life, and prevent costly breakdowns. Includes cleaning, inspection, and tune-ups.
+                    </p>
+                    <p class="ar hidden">
+                        برامج صيانة دورية للحفاظ على تشغيل التكييف بكفاءة، وتقليل استهلاك الطاقة،
+                        إطالة عمر المعدات، ومنع الأعطال المكلفة. تشمل التنظيف والتفتيش وضبط الأداء.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-card animate delay-3">
+                <div class="service-image">
+                    <img src="Refrigerant Recharging.png" alt="Technician checking refrigerant levels in AC system with precision gauges">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3 class="en">Refrigerant Recharging</h3>
+                    <h3 class="ar hidden">إعادة تعبئة المبردات</h3>
+                    <p class="en">
+                        Professional refrigerant top-up and leak detection services using environmentally-friendly refrigerants. 
+                        We properly dispose of old refrigerant following international standards.
+                    </p>
+                    <p class="ar hidden">
+                        خدمات إعادة تعبئة المبردات واكتشاف التسرب باستخدام مبردات صديقة للبيئة.
+                        نتخلص من المبردات القديمة بشكل صحيح وفقًا للمعايير الدولية.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="service-card animate delay-1">
+                <div class="service-image">
+                    <img src="smart control.png" alt="Modern smart thermostat being installed with wifi connectivity for home automation">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <h3 class="en">Smart Controls</h3>
+                    <h3 class="ar hidden">أنظمة التحكم الذكية</h3>
+                    <p class="en">
+                        Upgrade your AC system with smart thermostats and controls that allow remote monitoring and operation 
+                        via smartphone, saving energy while maximizing comfort.
+                    </p>
+                    <p class="ar hidden">
+                        قم بترقية نظام التكييف الخاص بك بأجهزة تنظيم الحرارة الذكية وضوابط تتيح المراقبة والتشغيل عن بُعد
+                        عبر الهاتف الذكي، مما يوفر الطاقة مع تعظيم الراحة.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Service 6 -->
+            <div class="service-card animate delay-2">
+                <div class="service-image">
+                    <img src="HVAC.png" alt="Commercial HVAC system installation in a large office building with multiple ductworks">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="en">Commercial HVAC</h3>
+                    <h3 class="ar hidden">أنظمة التكييف التجارية</h3>
+                    <p class="en">
+                        Complete HVAC solutions for businesses including installation, maintenance, and repair of central 
+                        air conditioning systems for offices, hotels, hospitals, and other commercial spaces.
+                    </p>
+                    <p class="ar hidden">
+                        حلول متكاملة لأنظمة التكييف التجارية بما في ذلك التركيب والصيانة والإصلاح لأنظمة التكييف المركزية
+                        للمكاتب والفنادق والمستشفيات وغيرها من المساحات التجارية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-50">
+        <div class="section-title">
+            <h2 class="en">Contact Us</h2>
+            <h2 class="ar hidden">اتصل بنا</h2>
+            <p class="en">Get in touch for all your AC needs in Iraq</p>
+            <p class="ar hidden">تواصل معنا لجميع احتياجات التكييف الخاصة بك في العراق</p>
+        </div>
+        
+        <div class="contact-container">
+            <form class="contact-form animate" id="contact-form">
+                <div class="form-group">
+                    <label for="name" class="en">Name</label>
+                    <label for="name" class="ar hidden">الاسم</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="en">Email</label>
+                    <label for="email" class="ar hidden">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="en">Phone</label>
+                    <label for="phone" class="ar hidden">الهاتف</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service" class="en">Service Needed</label>
+                    <label for="service" class="ar hidden">الخدمة المطلوبة</label>
+                    <select id="service" name="service" class="en">
+                        <option value="installation">Installation</option>
+                        <option value="repair">Repair</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="service" name="service" class="ar hidden" dir="rtl">
+                        <option value="installation">تركيب</option>
+                        <option value="repair">إصلاح</option>
+                        <option value="maintenance">صيانة</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="en">Message</label>
+                    <label for="message" class="ar hidden">الرسالة</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn en">Send Message</button>
+                <button type="submit" class="submit-btn ar hidden">إرسال الرسالة</button>
+            </form>
+            
+            <div class="contact-info animate delay-1">
+                <h3 class="en">Contact Information</h3>
+                <h3 class="ar hidden">معلومات الاتصال</h3>
+                
+                <p class="en"><i class="fas fa-map-marker-alt"></i> 123 Air Conditioning St, Baghdad, Iraq</p>
+                <p class="ar hidden"><i class="fas fa-map-marker-alt"></i> 123 شارع تكييف الهواء، بغداد، العراق</p>
+                
+                <p><i class="fas fa-phone-alt"></i> +964 123 456 7890</p>
+                
+                <p class="en"><i class="fas fa-envelope"></i> info@coolbreeze.iq</p>
+                <p class="ar hidden"><i class="fas fa-envelope"></i> info@coolbreeze.iq</p>
+                
+                <p class="en"><i class="fas fa-clock"></i> Open 7 Days: 8:00 AM - 10:00 PM</p>
+                <p class="ar hidden"><i class="fas fa-clock"></i> مفتوح 7 أيام: 8:00 صباحًا - 10:00 مساءً</p>
+                
+                <h3 class="en" style="margin-top: 2rem;">Emergency Service</h3>
+                <h3 class="ar hidden" style="margin-top: 2rem;">خدمة الطوارئ</h3>
+                
+                <p class="en"><i class="fas fa-phone-alt" style="color: var(--accent);"></i> +964 0771 445 3333 (24/7)</p>
+                <p class="ar hidden"><i class="fas fa-phone-alt" style="color: var(--accent);"></i> +964  0771 445 3333 (24/7)</p>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350943.1700825697!2d41.71962427504401!3d33.21415340341383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1559aa4c62e4e7a5%3A0xe1fd37d56f49e52f!2sBaghdad%2C%20Iraq!5e0!3m2!1sen!2s!4v1686589000863!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="en">CoolBreeze</h3>
+                <h3 class="ar hidden">نسيم بارد</h3>
+                <p class="en">
+                    Your trusted partner for premium air conditioning services in Iraq. 
+                    We bring comfort to your home and business with professional AC solutions.
+                </p>
+                <p class="ar hidden">
+                    شريكك الموثوق لخدمات تكييف الهواء الممتازة في العراق.
+                    نحضر الراحة إلى منزلك وعملك مع حلول التكييف الاحترافية.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="en">Quick Links</h3>
+                <h3 class="ar hidden">روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" class="en">Home</a><a href="#home" class="ar hidden">الصفحة الرئيسية</a></li>
+                    <li><a href="#about" class="en">About Us</a><a href="#about" class="ar hidden">معلومات عنا</a></li>
+                    <li><a href="#services" class="en">Services</a><a href="#services" class="ar hidden">خدماتنا</a></li>
+                    <li><a href="#contact" class="en">Contact</a><a href="#contact" class="ar hidden">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="en">Our Services</h3>
+                <h3 class="ar hidden">خدماتنا</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="en">AC Installation</a><a href="#" class="ar hidden">تركيب التكييف</a></li>
+                    <li><a href="#" class="en">AC Repair</a><a href="#" class="ar hidden">إصلاح التكييف</a></li>
+                    <li><a href="#" class="en">AC Maintenance</a><a href="#" class="ar hidden">صيانة التكييف</a></li>
+                    <li><a href="#" class="en">Commercial HVAC</a><a href="#" class="ar hidden">أنظمة التكييف التجارية</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="en">Newsletter</h3>
+                <h3 class="ar hidden">النشرة الإخبارية</h3>
+                <p class="en">Subscribe to get updates on special offers and tips for AC maintenance.</p>
+                <p class="ar hidden">اشترك للحصول على تحديثات حول العروض الخاصة ونصائح صيانة التكييف.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email" class="en" required>
+                    <input type="email" placeholder="بريدك الإلكتروني" class="ar hidden" required dir="rtl">
+                    <button type="submit" class="en">Subscribe</button>
+                    <button type="submit" class="ar hidden">اشتراك</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p class="en">© 2023 CoolBreeze AC Services. All Rights Reserved.</p>
+            <p class="ar hidden">© 2023 خدمات تكييف نسيم بارد. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching Functionality
+        const langEnBtn = document.getElementById('lang-en');
+        const langArBtn = document.getElementById('lang-ar');
+        
+        function switchLanguage(lang) {
+            // Update button states
+            if (lang === 'en') {
+                langEnBtn.classList.add('active');
+                langArBtn.classList.remove('active');
+                document.body.classList.remove('rtl');
+            } else {
+                langEnBtn.classList.remove('active');
+                langArBtn.classList.add('active');
+                document.body.classList.add('rtl');
+            }
+            
+            // Show/hide language elements
+            document.querySelectorAll('.en').forEach(el => {
+                el.style.display = lang === 'en' ? 'block' : 'none';
+            });
+            
+            document.querySelectorAll('.ar').forEach(el => {
+                el.style.display = lang === 'ar' ? 'block' : 'none';
+            });
+            
+            // Update form direction
+            document.getElementById('contact-form').dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update meta language
+            document.documentElement.lang = lang;
+        }
+        
+        langEnBtn.addEventListener('click', () => switchLanguage('en'));
+        langArBtn.addEventListener('click', () => switchLanguage('ar'));
+        
+        // Initialize with English
+        switchLanguage('en');
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email || !phone) {
+                alert(document.body.classList.contains('rtl') ? 'الرجاء ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
+                return;
+            }
+            
+            // In a real application, you would send the form data to a server here
+            alert(document.body.classList.contains('rtl') ? 
+                'تم إرسال رسالتك بنجاح! سوف نتصل بك قريبا.' : 
+                'Your message has been sent successfully! We will contact you soon.');
+            
+            this.reset();
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
+
